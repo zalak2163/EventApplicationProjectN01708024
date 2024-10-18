@@ -12,6 +12,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.First().EventId)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.First().EventName)
             </th>
             <th>
@@ -30,6 +33,9 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventId)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.EventName)
                 </td>
