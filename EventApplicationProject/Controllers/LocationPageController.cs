@@ -102,7 +102,7 @@ namespace EventApplicationProject.Controllers
         /// </summary>
         /// <param name="id">The ID of the location to delete.</param>
         /// <returns>A ServiceResponse indicating the result of the deletion operation.</returns>
-        [HttpDelete]
+        [HttpGet]
         public async Task<IActionResult> ConfirmDelete(int id)
         {
 
