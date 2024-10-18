@@ -1,0 +1,43 @@
+﻿@model EventApplicationProject.Models.AttendeeDto
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Attendee</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Update" asp-route-id="@Model.AttendeeId">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="AttendeeId" />
+
+            <div class="form-group">
+                <label asp-for="AttendeeName" class="control-label">Attendee Name:</label>
+                <input asp-for="AttendeeName" class="form-control" placeholder="@Model.AttendeeName" />
+                <span asp-validation-for="AttendeeName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label">Email:</label>
+                <input asp-for="Email" class="form-control" placeholder="@Model.Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="List">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
