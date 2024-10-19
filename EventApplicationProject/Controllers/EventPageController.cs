@@ -10,6 +10,7 @@ namespace EventApplicationProject.Controllers
         {
             return View();
         }
+
         private readonly IEventService _eventService;
 
         public EventPageController(IEventService eventService)
@@ -39,14 +40,19 @@ namespace EventApplicationProject.Controllers
         }
 
         /// <summary>
-        /// Creates a new event.
+        /// Displays a form to create a new event.
         /// </summary>
-        /// <param name="eventDto">The details of the event to create.</param>
-        /// <returns>A <see cref="ServiceResponse"/> indicating the result of the creation.</returns>
+        /// <returns>A view for creating a new event.</returns>
         public ActionResult New()
         {
             return View();
         }
+
+        /// <summary>
+        /// Creates a new event.
+        /// </summary>
+        /// <param name="eventDto">The details of the event to create.</param>
+        /// <returns>A <see cref="ServiceResponse"/> indicating the result of the creation.</returns>
         [HttpPost]
         public async Task<IActionResult> Create(EventDto eventDto)
         {
@@ -62,13 +68,11 @@ namespace EventApplicationProject.Controllers
             }
         }
 
-
         /// <summary>
-        /// Updates the details of an existing event.
+        /// Displays a form to edit an existing event.
         /// </summary>
         /// <param name="id">The ID of the event to update.</param>
-        /// <param name="eventDto">The updated event details.</param>
-        /// <returns>A <see cref="ServiceResponse"/> indicating the result of the update.</returns>
+        /// <returns>A view for editing the event, or an error if not found.</returns>
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -83,7 +87,12 @@ namespace EventApplicationProject.Controllers
             }
         }
 
-        //POST CategoryPage/Update/{id}
+        /// <summary>
+        /// Updates the details of an existing event.
+        /// </summary>
+        /// <param name="id">The ID of the event to update.</param>
+        /// <param name="eventDto">The updated event details.</param>
+        /// <returns>A <see cref="ServiceResponse"/> indicating the result of the update.</returns>
         [HttpPost]
         public async Task<IActionResult> Update(int id, EventDto eventDto)
         {
@@ -98,15 +107,15 @@ namespace EventApplicationProject.Controllers
                 return View("Error", new ErrorViewModel() { Errors = response.Messages });
             }
         }
+
         /// <summary>
-        /// Deletes an event by ID.
+        /// Displays a confirmation page for deleting an event.
         /// </summary>
         /// <param name="id">The ID of the event to delete.</param>
-        /// <returns>A <see cref="ServiceResponse"/> indicating the result of the deletion.</returns>
+        /// <returns>A view for confirming the deletion of the event, or an error if not found.</returns>
         [HttpGet]
         public async Task<IActionResult> ConfirmDelete(int id)
         {
-
             EventDto? eventDto = await _eventService.GetEvent(id);
             if (eventDto == null)
             {
@@ -118,7 +127,11 @@ namespace EventApplicationProject.Controllers
             }
         }
 
-        //POST CategoryPage/Delete/{id}
+        /// <summary>
+        /// Deletes an event by ID.
+        /// </summary>
+        /// <param name="id">The ID of the event to delete.</param>
+        /// <returns>A <see cref="ServiceResponse"/> indicating the result of the deletion.</returns>
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {

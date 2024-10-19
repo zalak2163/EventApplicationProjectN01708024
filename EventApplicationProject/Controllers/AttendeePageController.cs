@@ -14,13 +14,19 @@ namespace EventApplicationProject.Controllers
             _attendeeService = attendeeService;
         }
 
-        // GET: AttendeePage/Index
+        /// <summary>
+        /// Redirects to the list of attendees.
+        /// </summary>
+        /// <returns>Redirects to List action.</returns>
         public IActionResult Index()
         {
             return RedirectToAction("List");
         }
 
-        // GET: AttendeePage/List
+        /// <summary>
+        /// Retrieves and displays a list of all attendees.
+        /// </summary>
+        /// <returns>A view displaying the list of attendees.</returns>
         [HttpGet]
         public async Task<IActionResult> List()
         {
@@ -28,7 +34,11 @@ namespace EventApplicationProject.Controllers
             return View(attendees);
         }
 
-        // GET: AttendeePage/Details/{id}
+        /// <summary>
+        /// Retrieves and displays details of a specific attendee.
+        /// </summary>
+        /// <param name="id">The ID of the attendee.</param>
+        /// <returns>A view displaying the details of the attendee.</returns>
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
@@ -40,13 +50,20 @@ namespace EventApplicationProject.Controllers
             return View(attendee);
         }
 
-        // GET: AttendeePage/New
+        /// <summary>
+        /// Displays a form for creating a new attendee.
+        /// </summary>
+        /// <returns>A view with the attendee creation form.</returns>
         public IActionResult New()
         {
             return View();
         }
 
-        // POST: AttendeePage/Add
+        /// <summary>
+        /// Handles the creation of a new attendee.
+        /// </summary>
+        /// <param name="attendeeDto">The attendee data transfer object.</param>
+        /// <returns>Redirects to the details of the newly created attendee or shows an error.</returns>
         [HttpPost]
         public async Task<IActionResult> Add(AttendeeDto attendeeDto)
         {
@@ -58,7 +75,11 @@ namespace EventApplicationProject.Controllers
             return View("Error", new ErrorViewModel() { Errors = response.Messages });
         }
 
-        // GET: AttendeePage/Edit/{id}
+        /// <summary>
+        /// Displays a form for editing an existing attendee.
+        /// </summary>
+        /// <param name="id">The ID of the attendee to edit.</param>
+        /// <returns>A view with the attendee editing form.</returns>
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -70,7 +91,12 @@ namespace EventApplicationProject.Controllers
             return View(attendee);
         }
 
-        // POST: AttendeePage/Update/{id}
+        /// <summary>
+        /// Handles the update of an existing attendee's details.
+        /// </summary>
+        /// <param name="id">The ID of the attendee to update.</param>
+        /// <param name="attendeeDto">The updated attendee data transfer object.</param>
+        /// <returns>Redirects to the attendee's details or shows an error.</returns>
         [HttpPost]
         public async Task<IActionResult> Update(int id, AttendeeDto attendeeDto)
         {
@@ -82,7 +108,11 @@ namespace EventApplicationProject.Controllers
             return View("Error", new ErrorViewModel() { Errors = response.Messages });
         }
 
-        // GET: AttendeePage/ConfirmDelete/{id}
+        /// <summary>
+        /// Displays a confirmation page for deleting an attendee.
+        /// </summary>
+        /// <param name="id">The ID of the attendee to delete.</param>
+        /// <returns>A view for confirming the deletion of the attendee.</returns>
         [HttpGet]
         public async Task<IActionResult> ConfirmDelete(int id)
         {
@@ -94,7 +124,11 @@ namespace EventApplicationProject.Controllers
             return View(attendee);
         }
 
-        // POST: AttendeePage/Delete/{id}
+        /// <summary>
+        /// Handles the deletion of an attendee.
+        /// </summary>
+        /// <param name="id">The ID of the attendee to delete.</param>
+        /// <returns>Redirects to the list of attendees or shows an error.</returns>
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
