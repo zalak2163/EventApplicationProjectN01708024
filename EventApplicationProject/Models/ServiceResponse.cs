@@ -11,6 +11,7 @@
         /// </summary>
         public enum ServiceStatus
         {
+
             NotFound,   // The requested resource was not found
             Created,    // A new resource was created successfully
             Updated,    // An existing resource was updated successfully

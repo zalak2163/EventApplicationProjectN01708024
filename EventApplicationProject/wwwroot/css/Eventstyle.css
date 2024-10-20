@@ -164,7 +164,6 @@ div > a {
     display: inline-block;
     margin-top: 15px;
 }
-
 /* Responsive Design */
 @media (max-width: 768px) {
     .container {
